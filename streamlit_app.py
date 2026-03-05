@@ -1,4 +1,5 @@
 import streamlit as st
+import numpy as np
 import pandas as pd
 import joblib
 from sklearn.metrics import classification_report, confusion_matrix
@@ -43,6 +44,7 @@ st.write("Input data shape:", df.shape)
 df_model = df.drop(columns=["Time"], errors="ignore")
 X = df_model.drop(columns=['Class'])
 y_true = df_model['Class'] if 'Class' in df_model.columns else None
+unique_classes = np.unique(y_true)
 
 # make predictions
 proba = model.predict_proba(X)[:, 1]
@@ -72,11 +74,16 @@ if y_true is not None:
     st.subheader("Evaluation on the PCA-transformed Dataset")
 
     # classification metrics
+    if unique_classes.size < 2:
+        st.warning("Only one class present in the uploaded data!!!")
+
     report_dict = classification_report(
         y_true,
         pred,
+        labels=[0, 1],  # force both classes even if data contains only one class
         target_names=["Non-Fraud", "Fraud"],
-        output_dict=True
+        output_dict=True,
+        zero_division=0,  # avoid division-by-zero errors
     )
 
     # accuracy metric
