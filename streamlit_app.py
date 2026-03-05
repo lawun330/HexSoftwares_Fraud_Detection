@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 @st.cache_resource
 def load_artifacts():
-    model = joblib.load('./models/xgboost_tuned_v1.joblib')
+    model = joblib.load('./models/fraud_detector_xgboost_v1.joblib')
     sample_data = pd.read_csv('./data/creditcard_sample.csv')
     return model, sample_data
 model, sample_data = load_artifacts()
