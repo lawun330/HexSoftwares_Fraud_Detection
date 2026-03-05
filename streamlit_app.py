@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 
 @st.cache_resource
 def load_artifacts():
-    model = joblib.load('models/xgboost_tuned_v1.joblib')
-    preprocessor = joblib.load('preprocessors/preprocessor.joblib')
-    sample_data = pd.read_csv('data/creditcard_sample.csv')
+    model = joblib.load('./models/xgboost_tuned_v1.joblib')
+    preprocessor = joblib.load('./preprocessors/preprocessor.joblib')
+    sample_data = pd.read_csv('./data/creditcard_sample.csv')
     return model, preprocessor, sample_data
 model, preprocessor, sample_data = load_artifacts()
 st.title("Credit Card Fraud Detection (PCA Dataset)")
