@@ -8,10 +8,9 @@ import matplotlib.pyplot as plt
 @st.cache_resource
 def load_artifacts():
     model = joblib.load('./models/xgboost_tuned_v1.joblib')
-    preprocessor = joblib.load('./preprocessors/preprocessor.joblib')
     sample_data = pd.read_csv('./data/creditcard_sample.csv')
-    return model, preprocessor, sample_data
-model, preprocessor, sample_data = load_artifacts()
+    return model, sample_data
+model, sample_data = load_artifacts()
 st.title("Credit Card Fraud Detection (PCA Dataset)")
 
 # upload data or use built‑in data
@@ -27,7 +26,7 @@ st.write("Input data shape:", df.shape)
 
 # preprocess data
 df_model = df.drop(columns=['Time'])
-X = preprocessor.transform(df_model.drop(columns=['Class'])) if 'Class' in df_model.columns else preprocessor.transform(df_model)
+X = df_model.drop(columns=['Class'])
 y_true = df_model['Class'] if 'Class' in df_model.columns else None
 
 # make predictions
