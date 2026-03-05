@@ -50,7 +50,11 @@ col_data, col_pred = st.columns(2)
 
 with col_data:
     st.subheader("Transaction data")
-    st.dataframe(df_data_view.head(20))
+    st.dataframe(
+        df_data_view.head(20),
+        use_container_width=True,  # stretch to full column width
+        height=600
+    )
 
 with col_pred:
     st.subheader("Predictions & probabilities")
@@ -68,11 +72,12 @@ if y_true is not None:
     )
     report_df = pd.DataFrame(report_dict).T
 
-    st.subheader("Evaluation on the PCA-transformed dataset")
-    st.markdown("Classification metrics")
+    st.subheader("Evaluation on the PCA-transformed Dataset")
+    st.markdown("#### Classification metrics:")
     st.dataframe(report_df.style.format("{:.3f}"))
 
     # confusion matrix
+    st.markdown("#### Confusion matrix:")
     cm = confusion_matrix(y_true, pred)
     fig, ax = plt.subplots()
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
