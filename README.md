@@ -80,7 +80,7 @@ pip install -r requirements.txt
 **Backend:**
 ```bash
 cd backend
-uvicorn app:app --reload
+uvicorn api:app --reload
 ```
 
 ## Deployment Tips
