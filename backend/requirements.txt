@@ -1,0 +1,11 @@
+# Backend API
+fastapi==0.135.1
+uvicorn[standard]==0.41.0
+pydantic==2.12.5
+
+# Data Science & ML
+pandas==2.3.3
+joblib==1.5.3
+xgboost==3.2.0
+
+# No Jupyter/Visualization needed for production API

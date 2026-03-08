@@ -12,6 +12,7 @@ Machine learning project for detecting fraudulent credit card transactions using
 
 ```
 root/
+├── backend/              # FastAPI
 ├── data/                 # Dataset files (raw and sample)
 ├── models/               # Trained model files
 ├── notebooks/            # Jupyter notebooks for model development and analysis
@@ -67,12 +68,48 @@ conda activate fraud_detection_env
 pip install -r requirements.txt
 ```
 
+## Application Installation
+
+### Prerequisites
+
+1. **Repository files**: Download the repository as ZIP and extract it
+2. **Python**: Install it
+
+### Normal Python
+
+**Backend:**
+```bash
+cd backend
+uvicorn app:app --reload
+```
+
 ## Deployment Tips
+
+To deploy this application publicly (not just localhost), use hosting services like **Railway**, **Render**, **Heroku**, or **AWS**.
+
+For **Render**:
+
+- Build the FastAPI backend for production with
+    ```console
+    # Root Directory
+    ./
+    # Build Command
+    pip install -r backend/backend-requirements.txt
+    # Start Command
+    uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+    ```
+
+- Consider using environment variables for configuration
+    - PYTHON_VERSION used in backend/runtime.txt
+
 
 ### Local Host
 
 Streamlit: http://localhost:8501
+Backend API: http://localhost:8000
+API Docs: http://localhost:8000/docs
 
 ### Current Public Host
 
 Streamlit: https://fraudulent-transactions-detector.streamlit.app
+Backend API: 
