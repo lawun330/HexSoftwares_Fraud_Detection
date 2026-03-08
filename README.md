@@ -96,7 +96,7 @@ For **Render**:
     # Build Command
     pip install -r backend/backend-requirements.txt
     # Start Command
-    uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+    uvicorn backend.api:app --host 0.0.0.0 --port $PORT
     ```
 
 - Consider using environment variables for configuration
@@ -105,11 +105,12 @@ For **Render**:
 
 ### Local Host
 
-Streamlit: http://localhost:8501
-Backend API: http://localhost:8000
-API Docs: http://localhost:8000/docs
+- Streamlit: http://localhost:8501
+- Backend API: http://localhost:8000
+- API Docs: http://localhost:8000/docs
 
 ### Current Public Host
 
-Streamlit: https://fraudulent-transactions-detector.streamlit.app
-Backend API: 
+- Streamlit: https://fraudulent-transactions-detector.streamlit.app
+- Backend API: https://hexsoftwares-fraud-detection.onrender.com
+- API Docs: https://hexsoftwares-fraud-detection.onrender.com/docs
